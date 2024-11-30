@@ -24,7 +24,14 @@ public class Main {
             System.out.println("6. Sort students by marks");
             System.out.println("7. Exit");
             System.out.print("Choose an option: ");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice;
+
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input! Please enter a number from 1 to 7.");
+                continue;
+            }
 
             switch (choice) {
                 case 1 -> {
@@ -40,8 +47,8 @@ public class Main {
                     }
                      catch (NumberFormatException e) {
                      System.out.println("Invalid mark! Please enter a numeric value.");
-                    }                                                
                 }
+            }
                 case 2 -> {
                     System.out.print("Enter ID to search: ");
                     String id = scanner.nextLine();
@@ -51,17 +58,21 @@ public class Main {
                     } else {
                         System.out.println("Student details: " + student);
                     }
-                }   
+                }
                 case 3 -> {
-                    System.out.println("Delete functionality not implemented yet.");
+                    System.out.print("Enter ID to delete: ");
+                    String id = scanner.nextLine();
+                    Student student = bst.search(id);
+                    if (student == null) {
+                        System.out.println("Student not found!");
+                    } else {
+                        bst.delete(id);
+                        System.out.println("Student with ID " + id + " has been deleted.");
+                    }
                 }
                 case 4 -> {
                     System.out.println("Student list:");
-                    if (bst.isEmpty()) {
-                        System.out.println("No students available.");
-                    } else {
-                        bst.inOrderTraversal();
-                    }
+                    bst.inOrderTraversal();
                 }
                 case 5 -> {
                     System.out.println("Evaluate students by rank:");
@@ -78,13 +89,9 @@ public class Main {
                     System.out.println("Exiting program.");
                     return;
                 }
-                default -> System.out.println("Invalid choice!");
+                default -> System.out.println("Invalid choice! Please select a number from 1 to 7.");
             }
-
-
         }
-
-
-
     }
 }
+    
