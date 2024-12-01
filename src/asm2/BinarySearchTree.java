@@ -95,28 +95,20 @@ public class BinarySearchTree {
 
     private TreeNode deleteRec(TreeNode root, String id) {
         if (root == null) {
-            return root; // Không tìm thấy, không làm gì
+            return root; 
         }
-
-        // Tìm vị trí của node cần xóa
         if (id.compareTo(root.student.getId()) < 0) {
             root.left = deleteRec(root.left, id);
         } else if (id.compareTo(root.student.getId()) > 0) {
             root.right = deleteRec(root.right, id);
         } else {
-            // Đã tìm thấy node cần xóa
-            // Trường hợp 1: Node không có con hoặc chỉ có 1 con
+            
             if (root.left == null) {
                 return root.right;
             } else if (root.right == null) {
                 return root.left;
             }
-
-            // Trường hợp 2: Node có 2 con
-            // Tìm node nhỏ nhất ở cây con bên phải (successor)
             root.student = findMin(root.right).student;
-
-            // Xóa node nhỏ nhất ở cây con bên phải
             root.right = deleteRec(root.right, root.student.getId());
         }
 
@@ -125,7 +117,7 @@ public class BinarySearchTree {
 
     private TreeNode findMin(TreeNode root) {
         while (root.left != null) {
-            root = root.left;3
+            root = root.left;
         }
         return root;
     }

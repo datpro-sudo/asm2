@@ -92,6 +92,7 @@ public class Main {
                 default -> System.out.println("Invalid choice! Please select a number from 1 to 7.");
             }
         }
+        
     }
 }
     

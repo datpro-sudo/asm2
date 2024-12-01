@@ -10,27 +10,21 @@ public class Student {
         this.name = name;
         this.mark = mark;
     }
-
     public String getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public double getMark() {
         return mark;
     }
-
     public void setMark(double mark) {
         this.mark = mark;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getRank() {
         if (mark < 5) {
             return "Fail";
